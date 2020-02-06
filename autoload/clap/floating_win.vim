@@ -311,6 +311,8 @@ function! clap#floating_win#open() abort
   startinsert
 
   call g:clap.provider.apply_query()
+
+  let g:clap_closed = 0
 endfunction
 
 function! s:win_close(winid) abort
@@ -337,6 +339,8 @@ function! clap#floating_win#close() abort
   if s:exists_deoplete
     call deoplete#custom#buffer_option('auto_complete', v:true)
   endif
+
+  let g:clap_closed = 1
 endfunction
 
 let &cpoptions = s:save_cpo
